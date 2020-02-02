@@ -17,12 +17,10 @@
     <h1>坐标轴缩放确诊折线图</h1>
     <div id="line" style="width:100%;height:800px;"></div>
     <script type="text/javascript">
-        var example = [];
         var myChart = echarts.init(document.getElementById('tritreemap'));
-            
         function dataJson(data) {
             console.log(data);
-            example = data;
+            example = data.lineData;
             // 先获取列名，和日期
             // var date =[];
             let keys2 = [];
@@ -143,9 +141,9 @@
                                 },
                                 series:datas2
             };
-                myChart.setOption(option);
+            myChart.setOption(option);
         
-        }
+        };
     </script>
     
     <script type="text/javascript" src="./example.json?cb=dataJson"></script>
