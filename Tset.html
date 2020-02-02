@@ -1,0 +1,25 @@
+ <!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+
+<body>
+    <!-- 需要注意的是:
+     <script type="text/javascript" src="./index.json?callback=dataJson"></script>中的
+        src中： ? 之前为文件地址，? 之后为回调函数callback名称，
+        回调函数可以简写为 cb ,  回调函数名称要与文件中的名称一致，如本文件中的dataJson
+        如，index.json?cb=abc，那么 index.json 的名字为 abc-->
+    <script>
+        function dataJson(data) {
+            console.log(data);
+        }
+    </script>
+    
+    <!-- 引入要放在后面 -->
+    <script type="text/javascript" src="./index.json?cb=dataJson"></script>
+</body>
+
+</html>
