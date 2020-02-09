@@ -185,7 +185,7 @@
                             </div>
                             <div class="card-body">
                                 <div class="chart-container">
-                                    <div id="liandong1" style="width:100%;padding-bottom:56%;"></div>
+                                    <div id="liandong1" style="width:100%;padding-bottom:59%;"></div>
                                 </div>
                             </div>
                         </div>
@@ -198,7 +198,7 @@
                                     截止目前，每日新增的确诊病例数仍是上涨状态，形式不容乐观。但积极的一面是，确诊增长率趋于稳定。
                                 </div>
                                 <div class="chart-container" style="padding: 0.75rem 0;">
-                                    <div id="add" style="width:100%;padding-bottom:56%;"></div>
+                                    <div id="add" style="width:100%;padding-bottom:67%;"></div>
                                 </div>
                                 <div class="card-sub">
                                     注：本界面图表均含交互组件，拖动下方滑动条可缩放上方窗口。
@@ -303,7 +303,7 @@
         <!-- 第一个图 添加区间的-->
         <script type="text/javascript">
             var myChart = echarts.init(document.getElementById('liandong1'));
-            scale = 1.8; // width/height
+            scale = 1.7; // width/height
             myChart._zr.painter._height = myChart._zr.painter._width/scale;
             console.log(myChart._zr)
             console.log(myChart._zr.dom.innerHTML)
@@ -715,7 +715,7 @@
         <!-- 第二个图 -->
         <script type="text/javascript">
             var myChart = echarts.init(document.getElementById('add'));
-            scale = 1.8; // width/height
+            scale = 1.5; // width/height
             myChart._zr.painter._height = myChart._zr.painter._width/scale;
             option = {
                 backgroundColor:'#ffffff',
