@@ -185,7 +185,7 @@
                             </div>
                             <div class="card-body">
                                 <div class="chart-container">
-                                    <div id="liandong1" style="width:100%;padding-bottom:59%;"></div>
+                                    <div id="liandong1" style="width:100%;padding-bottom:63%;"></div>
                                 </div>
                             </div>
                         </div>
@@ -198,7 +198,7 @@
                                     截止目前，每日新增的确诊病例数仍是上涨状态，形式不容乐观。但积极的一面是，确诊增长率趋于稳定。
                                 </div>
                                 <div class="chart-container" style="padding: 0.75rem 0;">
-                                    <div id="add" style="width:100%;padding-bottom:67%;"></div>
+                                    <div id="add" style="width:100%;padding-bottom:63%;"></div>
                                 </div>
                                 <div class="card-sub">
                                     注：本界面图表均含交互组件，拖动下方滑动条可缩放上方窗口。
@@ -303,7 +303,7 @@
         <!-- 第一个图 添加区间的-->
         <script type="text/javascript">
             var myChart = echarts.init(document.getElementById('liandong1'));
-            scale = 1.7; // width/height
+            scale = 1.6; // width/height
             myChart._zr.painter._height = myChart._zr.painter._width/scale;
             console.log(myChart._zr)
             console.log(myChart._zr.dom.innerHTML)
@@ -386,7 +386,7 @@
                     formatter: function(params) {
                         return dataValue - params.value;
                     },
-                    fontSize: 40,
+                    fontSize: 400,
                     //padding: [90, 0, 0, 0],
                     color: '#7d838b',
                     textStyle: {
@@ -422,13 +422,13 @@
             option = {
                 backgroundColor: '#ffffff',
                 legend: {
-                        data: ['全国（真实）', '湖北（真实）','武汉（真实）','全国（预测）', '湖北（预测）','武汉（预测）'],
-                        top: '0%',
-                        right: '15%',
-                        textStyle: {
-                            color: '#7d838b',
-                        },
+                    data: ['全国（真实）', '湖北（真实）','武汉（真实）','全国（预测）', '湖北（预测）','武汉（预测）'],
+                    top: '0%',
+                    right: '15%',
+                    textStyle: {
+                        color: '#7d838b',
                     },
+                },
                 title: {
                     text: '',
                     subtext: '',
@@ -440,9 +440,191 @@
                     top: '15%',
                     bottom: '7%',
                     containLabel: true
-                },tooltip: {
+                },
+                tooltip: {
                     trigger: 'axis'
                 },
+                series: [
+                    {   name: '全国（真实）',
+                        smooth: true,
+                        type: 'line',
+                        symbolSize: 1,
+                        symbol: 'circle',
+                        itemStyle: lineitemStyle,
+                        data: firstLineData,
+                        tooltip: {
+                            formatter: '{b0},{a0}: {c0}<br />{b2}'
+                        }
+                    },
+                // {
+                //     name: '全国（预测）',
+                //     smooth: true,
+                //     type: 'line',
+                //     symbolSize: 1,
+                //     symbol: 'diamond',
+                //     itemStyle: lineitemStyle,
+                //     lineStyle: {
+                //         normal: {
+                //             type: 'dotted'
+                //         }
+                //     },
+                
+                //     data: firstLineDottedData,
+                //       tooltip: {
+                //         formatter: '{b0},{a0}: {c0}<br />{b2}'
+                //     }
+                // },    
+                    {   name: '全国预测上区间',
+                        type: 'line',
+                        data: quanguoshang,
+                        itemStyle: lineitemStyle00,
+                        lineStyle: {
+                            opacity: 0
+                        },
+                        areaStyle: {
+                            normal: {
+                                color: '#FFE9EE',
+                                opacity: 1
+                            }
+                        },
+                        stack: '总数',
+                        z: 0
+                        // symbol: 'none'
+                    },
+                    {   name: '全国预测下区间',
+                        type: 'line',
+                        itemStyle: lineitemStyle00,
+                        data: quanguoxia,
+                        lineStyle: {
+                            opacity: 0
+                        },
+                        areaStyle: {
+                            normal: {
+                                color: '#ffffff',
+                                opacity: 1
+                            }
+                        },
+                        stack: "总数1",
+                        z: 0
+                        // symbol: 'none'
+                    }, 
+                    {   name: '湖北（真实）',
+                        smooth: true,
+                        type: 'line',
+                        symbolSize: 1,
+                        symbol: 'circle',
+                        itemStyle: lineitemStyle1,
+                        data: sendLineData,
+                        tooltip: {
+                            formatter: '{b0},{a0}: {c0}<br />{b2}'
+                        }
+                    }, 
+                // {
+                //     name: '湖北（预测）',
+                //     smooth: true,
+                //     type: 'line',
+                //     symbolSize: 1,
+                //     symbol: 'diamond',
+                //     itemStyle: lineitemStyle1,
+                //     lineStyle: {
+                //         normal: {
+                //             type: 'dotted'
+                //         }
+                //     },
+                //     data: sendLineDottedData,
+                //     tooltip: {
+                //         formatter: '{b0},{a0}: {c0}<br />{b2}'
+                //     }
+                // },   
+                    {   name: '湖北预测上区间',
+                        type: 'line',
+                        data: hubeishang,
+                        itemStyle: lineitemStyle11,
+                        lineStyle: {
+                            opacity: 0
+                        },
+                        areaStyle: {
+                            color: '#E7FAFA',
+                            opacity: 1
+                        },
+                        stack: '总数2',
+                        z: 0
+                        // symbol: 'none'
+                    },
+                    {   name: '湖北预测下区间',
+                        type: 'line',
+                        data: hubeixia,
+                        itemStyle: lineitemStyle11,
+                        lineStyle: {
+                            opacity: 0
+                        },
+                        areaStyle: {
+                            color: '#ffffff',
+                            opacity: 1
+                        },
+                        stack: "总数3",
+                        z: 0
+                        // symbol: 'none'
+                    }, 
+                    {   name: '武汉（真实）',
+                        type: 'line',
+                        smooth: true,
+                        symbolSize: 1,
+                        symbol: 'circle',
+                        itemStyle: lineitemStyle2,
+                        data: threeLineData,
+                        tooltip: {
+                            formatter: '{b0},{a0}: {c0}<br />{b2}'
+                        }
+                    },
+                // {
+                //     type: 'line',
+                //     name: '武汉（预测）',
+                //     smooth: true,
+                //     symbol: 'diamond',
+                //     symbolSize: 1,
+                //     itemStyle: lineitemStyle2,
+                //     lineStyle: {
+                //         normal: {
+                //             type: 'dotted'
+                //         }
+                //     },
+                //     data: threeLineDottedData,
+                //     tooltip: {
+                //         formatter: '{b0},{a0}: {c0}<br />{b2}'
+                //     }
+                // },
+                    {   name: '武汉预测上区间',
+                        type: 'line',
+                        data: wuhanshang,
+                        itemStyle: lineitemStyle22,
+                        lineStyle: {
+                            opacity: 0
+                        },
+                        areaStyle: {
+                            color: '#FFF3B2',
+                            opacity: 1
+                        },
+                        stack: '总数4',
+                        z: 0
+                        // symbol: 'none'
+                    },
+                    {   name: '武汉预测下区间',
+                        type: 'line',
+                        data: wuhanxia,
+                        itemStyle: lineitemStyle22,
+                        lineStyle: {
+                            opacity: 0
+                        },
+                        areaStyle: {
+                            color: '#ffffff',
+                            opacity: 1
+                        },
+                        stack: "总数5",
+                        z: 0
+                        // symbol: 'none'
+                    }
+                ],
                 xAxis: {
                     type: 'category',
                     boundaryGap: false,
@@ -485,11 +667,11 @@
                             color: '#7d838b'
                         }
                     },
-                    scale: true
+                    scale: true,
+                    z: 1
                 },
-                "dataZoom": [{
-
-
+                "dataZoom": [
+                    {
                         "show": true,
                         "height": '5%',
                         "xAxisIndex": [
@@ -517,196 +699,8 @@
                         "height": 10,
                         "start": 25,
                         "end": 65
-                    }],
-                series: [{
-                    name: '全国（真实）',
-                    smooth: true,
-                    type: 'line',
-                    symbolSize: 1,
-                    symbol: 'circle',
-                    itemStyle: lineitemStyle,
-                    data: firstLineData,
-                    tooltip: {
-                        formatter: '{b0},{a0}: {c0}<br />{b2}'
                     }
-                },
-            
-
-
-
-
-                // {
-                //     name: '全国（预测）',
-                //     smooth: true,
-                //     type: 'line',
-                //     symbolSize: 1,
-                //     symbol: 'diamond',
-                //     itemStyle: lineitemStyle,
-                //     lineStyle: {
-                //         normal: {
-                //             type: 'dotted'
-                //         }
-                //     },
-                
-                //     data: firstLineDottedData,
-                //       tooltip: {
-                //         formatter: '{b0},{a0}: {c0}<br />{b2}'
-                //     }
-                // },    
-
-                {
-            name: '全国预测上区间',
-            type: 'line',
-            data: quanguoshang,
-            itemStyle: lineitemStyle00,
-            lineStyle: {
-                opacity: 0
-            },
-            areaStyle: {
-                color: '#FFB5C5',
-                opacity: 0.3
-            },
-            stack: '总数',
-            // symbol: 'none'
-        },
-                {
-            name: '全国预测下区间',
-            type: 'line',
-            itemStyle: lineitemStyle00,
-            data: quanguoxia,
-            lineStyle: {
-                opacity: 0
-            },
-            areaStyle: {
-                color: '#ffffff',
-                opacity: 1
-            },
-            stack: "总数1",
-            // symbol: 'none'
-        }, 
-
-
-
-                {
-                    name: '湖北（真实）',
-                    smooth: true,
-                    type: 'line',
-                    symbolSize: 1,
-                    symbol: 'circle',
-                    itemStyle: lineitemStyle1,
-                    data: sendLineData,
-                    tooltip: {
-                        formatter: '{b0},{a0}: {c0}<br />{b2}'
-                    }
-                }, 
-                // {
-                //     name: '湖北（预测）',
-                //     smooth: true,
-                //     type: 'line',
-                //     symbolSize: 1,
-                //     symbol: 'diamond',
-                //     itemStyle: lineitemStyle1,
-                //     lineStyle: {
-                //         normal: {
-                //             type: 'dotted'
-                //         }
-                //     },
-                //     data: sendLineDottedData,
-                //     tooltip: {
-                //         formatter: '{b0},{a0}: {c0}<br />{b2}'
-                //     }
-                // },   
-                {
-            name: '湖北预测上区间',
-            type: 'line',
-            data: hubeishang,
-            itemStyle: lineitemStyle11,
-            lineStyle: {
-                opacity: 0
-            },
-            areaStyle: {
-                color: '#AEEEEE',
-                opacity: 0.3
-            },
-            stack: '总数2',
-            // symbol: 'none'
-        },
-                {
-            name: '湖北预测下区间',
-            type: 'line',
-            data: hubeixia,
-            itemStyle: lineitemStyle11,
-            lineStyle: {
-                opacity: 0
-            },
-            areaStyle: {
-                color: '#ffffff',
-                opacity: 1
-            },
-            stack: "总数3",
-            // symbol: 'none'
-        }, 
-
-
-                {
-                    type: 'line',
-                    name: '武汉（真实）',
-                    smooth: true,
-                    symbolSize: 1,
-                    symbol: 'circle',
-                    itemStyle: lineitemStyle2,
-                    data: threeLineData,
-                    tooltip: {
-                        formatter: '{b0},{a0}: {c0}<br />{b2}'
-                    }
-                },
-                // {
-                //     type: 'line',
-                //     name: '武汉（预测）',
-                //     smooth: true,
-                //     symbol: 'diamond',
-                //     symbolSize: 1,
-                //     itemStyle: lineitemStyle2,
-                //     lineStyle: {
-                //         normal: {
-                //             type: 'dotted'
-                //         }
-                //     },
-                //     data: threeLineDottedData,
-                //     tooltip: {
-                //         formatter: '{b0},{a0}: {c0}<br />{b2}'
-                //     }
-                // },
-                {
-            name: '武汉预测上区间',
-            type: 'line',
-            data: wuhanshang,
-            itemStyle: lineitemStyle22,
-            lineStyle: {
-                opacity: 0
-            },
-            areaStyle: {
-                color: '#FFD700',
-                opacity: 0.3
-            },
-            stack: '总数4',
-            // symbol: 'none'
-        },
-                {
-            name: '武汉预测下区间',
-            type: 'line',
-            data: wuhanxia,
-            itemStyle: lineitemStyle22,
-            lineStyle: {
-                opacity: 0
-            },
-            areaStyle: {
-                color: '#ffffff',
-                opacity: 1
-            },
-            stack: "总数5",
-            // symbol: 'none'
-        }, ]
+                ],
             };
 
             myChart.setOption(option);
@@ -715,7 +709,7 @@
         <!-- 第二个图 -->
         <script type="text/javascript">
             var myChart = echarts.init(document.getElementById('add'));
-            scale = 1.5; // width/height
+            scale = 1.6; // width/height
             myChart._zr.painter._height = myChart._zr.painter._width/scale;
             option = {
                 backgroundColor:'#ffffff',
