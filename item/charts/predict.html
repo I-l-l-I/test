@@ -1,6 +1,16 @@
 <!DOCTYPE html>
 <html>
     <head>
+        <script>
+            var _hmt = _hmt || [];
+            (function() {
+              var hm = document.createElement("script");
+              hm.src = "https://hm.baidu.com/hm.js?fefb7ff4c65399524bc151da04f6c52a";
+              var s = document.getElementsByTagName("script")[0]; 
+              s.parentNode.insertBefore(hm, s);
+            })();
+        </script>
+            
         <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
         <meta http-equiv="Content-Type" content="charset=utf-8" />
         <title>2019nCoV</title>
@@ -125,27 +135,38 @@
                                 <div class="page-header">
                                     <h4 class="page-title">疫情发展预测</h4>
                                 </div>
-                                <p>基于传播动力学及黄森忠博士建构的普适SEIR模型，运用“南开大学智英健康数据研究中心”开发的程序EpiSIX，我们对2019-nCoV新型冠状病毒数据做出疫情发展及至今疾控效率的研判。我们利用国家卫健委公布的从2019.12.12至2020.2.10的被确诊病例总数的数据链，着重研究了武汉市、 湖北省、全国和几个特殊地区的疫情发展，做出如下三天的区间预测。</p>
+                                <p>基于传播动力学及黄森忠博士建构的普适SEIR模型，运用“南开大学智英健康数据研究中心”开发的程序EpiSIX，我们对2019-nCoV新型冠状病毒数据做出疫情发展及至今疾控效率的研判。我们利用国家卫健委公布的从2019.12.12至2020.2.13的被确诊病例总数的数据链，着重研究了武汉市、 湖北省、全国和几个特殊地区的疫情发展，做出如下三天的区间预测。</p>
                                 <div class="c">
                                     <p style="text-indent:0;font-size:18px"><i class="fas fa-chevron-right" style="margin-right:5px;"></i>新冠肺炎确诊病例数时序区间预测图</p>
                                     <div class="c-height">
                                         <div class="chart" id="mainPredict"></div>
                                     </div>
+                                    <div class="nav-item">
+                                        <select class="selectpicker" id="dropdown" style="width:100px;">
+                                            <option onclick="select(0)" selected="">北京</option>
+                                            <option onclick="select(1)">天津</option>
+                                            <option onclick="select(2)">重庆</option>
+                                            <option onclick="select(3)">广东</option>
+                                            <option onclick="select(4)">浙江</option>
+                                            <option onclick="select(5)">湖南</option>
+                                            <option onclick="select(6)">河南</option>
+                                            <option onclick="select(7)">江苏</option>
+                                            <option onclick="select(8)">江西</option>
+                                            <option onclick="select(9)">安徽</option>
+                                        </select>
+                                    </div>
                                     <div class="c-height">
                                         <div class="chart" id="extraPredict"></div>
                                 </div>
                                 </div>
+                            </br>
                                 <div class="c">
                                     <p style="text-indent:0;font-size:18px"><i class="fas fa-chevron-right" style="margin-right:5px;"}></i>新冠肺炎新增治愈/新增确诊比值时序图</p>
                                     <div class="c-height">
                                         <div class="chart" id="addminutt"></div>
                                     </div>
-                                    <div class="card">
-                                        <div class="card-body">
-                                            <p style="margin:0;">由上图可以看出，每日新增治愈人数与新增确诊人数的比值在2月4日之后，整体都开始有了明显的上升趋势。尤其是除湖北省以外的地区，比值已经逐步接近1，即将达到每日新增治愈人数＞新增确诊人数的拐点；湖北省面临的医疗救助压力还比较大，需要全国的持续支持和支援。</p>
-                                        </div>
-                                    </div>
                                 </div>
+                            </br>
                                 <div class="c">
                                     <p style="text-indent:0;font-size:18px"><i class="fas fa-chevron-right" style="margin-right:5px;"></i>新冠肺炎累计确诊增长率时序图</p>
                                     <div class="c-height">
@@ -153,12 +174,14 @@
                                     </div>
                                     <div class="card">
                                         <div class="card-body">
-                                            <p style="margin:0;">截止目前，每日新增的确诊病例数仍是上涨状态，形式不容乐观。但积极的一面是，确诊增长率逐步下降。</p>
+                                            <p style="margin:0;">结论: 湖北以外全国各地，京津冀和浙江省的实际值偏离预测区间些许，这是实际数据下坡的标志。2.12和2.13在武汉，湖北省和全国的数据，受2.12日将武汉的临床病例约1.3万计入统计数的影响，使得这三地的实际数据严重偏离预测区间。但是，若将这两天的实际数据减去新增的临床病例数约1.3万，则所得的值依然在预测区间的偏下界些许。数据统计方法的突然改变，也是对如何解说预测结果的一个挑战。</p>
                                         </div>
                                     </div>
                                 </div>
-                                
                             </div>
+                            <a href="../charts/review.html">
+                                <button class="btn btn-secondary">疫情发展回顾</button>
+                            </a>
                         </div>
                     </div>
                 </div>
@@ -212,7 +235,7 @@
                 wuhanDelta.push(p11-p12);
                 wuhanLow.push(p12);
             };
-            delta = 2;
+            delta = 9;
             n = 0;
             rdays = data["real"].length;
             pdays = data["predictive"].length;
@@ -272,16 +295,167 @@
 
 
         </script>
+        <!-- select -->
+        <script type="text/javascript">
+            choose=["北京","天津","重庆","广东","浙江","湖南","河南","江苏","江西","安徽"];
+            choosereal=["beijing","tianjin","chongqing","guangdong","zhejiang",
+            "hunan","henan","jiangsu","jiangxi","anhui"];
+            chooseshang=["beijingshang","tianjinshang","chongqingshang","guangdongshang","zhejiangshang",
+            "hunanshang","henanshang","jiangsushang","jiangxishang","anhuishang"];
+            choosexia=["beijingxia","tianjinxia","chongqingxia","guangdongxia","zhejiangxia",
+            "hunanxia","henanxia","jiangsuxia","jiangxixia","anhuixia"];
+            var myChart;
+            function select(n){
+                shengfen=choose[n];
+                NN=0;
+                for (var i = 0; i < choose.length; i++) {
+                    if(choose[i]==shengfen){
+                        NN=i
+                    }
+                }
+                    function addDatachoose(date,r,pup,plow){ 
+                        totalchoose.push(r);
+                        totalDeltachoose.push(pup-plow);
+                        totalLowchoose.push(plow);
+                    };
+                    delta = 4;
+                    n = 0;
+                    rdays = data["real"].length;
+                    pdays = data["predictive"].length;
+                    for (i = pdays-1; i > -1; i--) {
+                        if (data["real"][rdays-delta]["date"] == data["predictive"][i]["date"]){n = i;break;}
+                    };
+                    function addDataN(N){
+                        totalchoose=[];totalDeltachoose=[];totalLowchoose=[];
+                        for (i = 0; i < rdays+pdays-n-delta; i++) {
+                            if (i < rdays-delta) {
+                                addDatachoose(data["real"][i]["date"],
+                                data["real"][i][choosereal[N]],
+                                '_','_');
+                            } else if (i < rdays) {
+                                j = i+delta-rdays+n;
+                                addDatachoose(data["real"][i]["date"],
+                                data["real"][i][choosereal[N]],
+                                data["predictive"][j][chooseshang[N]],data["predictive"][j][choosexia[N]]);
+                            } else {
+                                j = i+delta-rdays+n;
+                                addDatachoose(data["predictive"][j]["date"],
+                                '_',
+                                data["predictive"][j][chooseshang[N]],data["predictive"][j][choosexia[N]]);
+                            }
+                        }
+                    }
+                    addDataN(NN);
+                    //if (myChart != null && myChart != "" && myChart != undefined) {myChart.dispose();}
+                    myChart = echarts.init(document.getElementById('extraPredict'));
+                    option = {
+                        backgroundColor: 'transparent',
+                        legend: {
+                            right: '5%',
+                            data: [shengfen]
+                        },
+                        grid: {
+                            left: 0,
+                            right: 15,
+                            top: '15%',
+                            bottom: '10%',
+                            containLabel: true
+                        },
+                        tooltip: {
+                            trigger: 'axis',
+                            formatter: function(params) {
+                                res=params[0].name+'<br>';
+                                for (i=0;i<params.length/3;i++) {
+                                    res+=params[3*i].seriesName+': '+params[3*i].value+'<br>';
+                                    lower=params[3*i+1].value;
+                                    upper=(isNaN(params[3*i+2].value))?'_':lower+params[3*i+2].value;
+                                    res+=params[3*i+1].seriesName+'预测区间: ['+lower+', '+upper+']<br>';
+                                };
+                                return res
+                            }
+                        },
+                        series: [
+                            {   name: shengfen,
+                                type: 'line',
+                                symbolSize: 4,
+                                symbol: 'rect',
+                                itemStyle: {color:'rgba(255,37,117,0.7)',borderColor:'rgba(255,37,117,0.5)',borderWidth:2},
+                                data: totalchoose
+                            },
+                            {   name: shengfen, //下界
+                                type: 'line',
+                                data: totalLowchoose,
+                                stack: '预测',
+                                itemStyle: {color:'rgba(255,37,117,0.7)',borderColor:'rgba(255,37,117,0.5)',borderWidth:1},
+                                lineStyle: {opacity: 0}
+                            },
+                            {   name: shengfen, //区间长度
+                                type: 'line',
+                                data: totalDeltachoose,
+                                stack: '预测',
+                                itemStyle: {color:'rgba(255,37,117,0.7)',borderColor:'rgba(255,37,117,0.5)',borderWidth:1},
+                                lineStyle: {opacity: 0},
+                                areaStyle: {color: '#FFE9EE',opacity: 0.8}
+                            }
+                        ],
+                        xAxis: {
+                            type: 'category',
+                            boundaryGap: false,
+                            axisTick: {
+                                show: false
+                            },
+                            axisLine: {
+                                lineStyle: {
+                                    color: '#566573'
+                                }
+                            },
+                            axisLabel: {
+                                fontSize: 11
+                            },
+                            data: dateWithPredict
+                        },
+                        yAxis: {
+                            name:"病例数",
+                            type: 'value',
+                            nameTextStyle: {
+                                verticalAlign: 'middle'
+                            },
+                            axisLine: {
+                                lineStyle: {
+                                    color: '#566573'
+                                }
+                            },
+                            axisLabel: {
+                                fontSize: 8.5,
+                                rotate:60
+                            },
+                            scale: true
+                        },
+                        dataZoom: {
+                            type: 'slider',
+                            xAxisIndex: [0],
+                            height: '6%',
+                            bottom: '2%',
+                            start: 50,
+                            end: 100,
+                            showDetail: false,
+                            handleIcon: 'path://M306.1,413c0,2.2-1.8,4-4,4h-59.8c-2.2,0-4-1.8-4-4V200.8c0-2.2,1.8-4,4-4h59.8c2.2,0,4,1.8,4,4V413z',
+                            borderColor: '#90979c'
+                        }
+                    };
+                    myChart.setOption(option);
+            }
+            select(0);
+        </script>
         <script type="text/javascript">
             var myChart1 = echarts.init(document.getElementById('mainPredict'));
-            var myChart2 = echarts.init(document.getElementById('extraPredict'));
             var myChart3 = echarts.init(document.getElementById('addminutt'));
             var myChart4 = echarts.init(document.getElementById('add'));
             option1 = {
                 backgroundColor: 'transparent',
                 legend: {
                     right: '5%',
-                    data: ['全国','湖北','武汉','湖北以外']
+                    data: ['全国','湖北','武汉']
                 },
                 grid: {
                     left: 0,
@@ -306,91 +480,69 @@
                 series: [
                     {   name: '全国',
                         type: 'line',
-                        symbolSize: 1,
-                        symbol: 'circle',
-                        itemStyle: {color:'rgba(255,37,117,0.7)',borderColor:'rgba(255,37,117,0.5)',borderWidth:10},
+                        symbolSize: 4,
+                        symbol: 'rect',
+                        itemStyle: {color:'rgba(255,37,117,0.7)',borderColor:'rgba(255,37,117,0.5)',borderWidth:2},
                         data: total
                     },
                     {   name: '全国', //下界
                         type: 'line',
                         data: totalLow,
                         stack: '全国预测',
-                        itemStyle: {color:'rgba(255,37,117,0.7)',borderColor:'rgba(255,37,117,0.5)',borderWidth:2},
+                        itemStyle: {color:'rgba(255,37,117,0.7)',borderColor:'rgba(255,37,117,0.5)',borderWidth:1},
                         lineStyle: {opacity: 0}
                     },
                     {   name: '全国', //区间长度
                         type: 'line',
                         data: totalDelta,
                         stack: '全国预测',
-                        itemStyle: {color:'rgba(255,37,117,0.7)',borderColor:'rgba(255,37,117,0.5)',borderWidth:2},
+                        itemStyle: {color:'rgba(255,37,117,0.7)',borderColor:'rgba(255,37,117,0.5)',borderWidth:1},
                         lineStyle: {opacity: 0},
                         areaStyle: {color: '#FFE9EE',opacity: 0.8}
                     },
                     {   name: '湖北',
                         type: 'line',
-                        symbolSize: 1,
-                        symbol: 'circle',
-                        itemStyle: {color:'rgba(0,133,245,0.7)',borderColor:'rgba(0,133,245,0.5)',borderWidth:10},
+                        symbolSize: 4,
+                        symbol: 'rect',
+                        itemStyle: {color:'rgba(0,133,245,0.7)',borderColor:'rgba(0,133,245,0.5)',borderWidth:2},
                         data: hubei
                     },
                     {   name: '湖北', //下界
                         type: 'line',
                         data: hubeiLow,
                         stack: '湖北预测',
-                        itemStyle: {color:'rgba(0,133,245,0.7)',borderColor:'rgba(0,133,245,0.5)',borderWidth:2},
+                        itemStyle: {color:'rgba(0,133,245,0.7)',borderColor:'rgba(0,133,245,0.5)',borderWidth:1},
                         lineStyle: {opacity: 0}
                     },
                     {   name: '湖北', //区间长度
                         type: 'line',
                         data: hubeiDelta,
                         stack: '湖北预测',
-                        itemStyle: {color:'rgba(0,133,245,0.7)',borderColor:'rgba(0,133,245,0.5)',borderWidth:2},
+                        itemStyle: {color:'rgba(0,133,245,0.7)',borderColor:'rgba(0,133,245,0.5)',borderWidth:1},
                         lineStyle: {opacity: 0},
                         areaStyle: {color: '#E7FAFA',opacity: 0.8}
                     },
                     {   name: '武汉',
                         type: 'line',
-                        symbolSize: 1,
-                        symbol: 'circle',
-                        itemStyle: {color:'rgba(255,170,0,0.7)',borderColor:'rgba(255,170,0,0.5)',borderWidth:10},
+                        symbolSize: 4,
+                        symbol: 'rect',
+                        itemStyle: {color:'rgba(255,170,0,0.7)',borderColor:'rgba(255,170,0,0.5)',borderWidth:2},
                         data: wuhan
                     },
                     {   name: '武汉', //下界
                         type: 'line',
                         data: wuhanLow,
                         stack: '武汉预测',
-                        itemStyle: {color:'rgba(255,170,0,0.7)',borderColor:'rgba(255,170,0,0.5)',borderWidth:2},
+                        itemStyle: {color:'rgba(255,170,0,0.7)',borderColor:'rgba(255,170,0,0.5)',borderWidth:1},
                         lineStyle: {opacity: 0}
                     },
                     {   name: '武汉', //区间长度
                         type: 'line',
                         data: wuhanDelta,
                         stack: '武汉预测',
-                        itemStyle: {color:'rgba(255,170,0,0.7)',borderColor:'rgba(255,170,0,0.5)',borderWidth:2},
+                        itemStyle: {color:'rgba(255,170,0,0.7)',borderColor:'rgba(255,170,0,0.5)',borderWidth:1},
                         lineStyle: {opacity: 0},
                         areaStyle: {color: '#FFF3B2',opacity: 0.8}
-                    },
-                    {   name: '湖北以外',
-                        type: 'line',
-                        symbolSize: 1,
-                        symbol: 'circle',
-                        itemStyle: {color:'rgba(2,191,138,0.7)',borderColor:'rgba(2,191,138,0.5)',borderWidth:10},
-                        data: others
-                    },
-                    {   name: '湖北以外', //下界
-                        type: 'line',
-                        data: othersLow,
-                        stack: '湖北外预测',
-                        itemStyle: {color:'rgba(2,191,138,0.7)',borderColor:'rgba(2,191,138,0.5)',borderWidth:2},
-                        lineStyle: {opacity: 0}
-                    },
-                    {   name: '湖北以外', //区间长度
-                        type: 'line',
-                        data: othersDelta,
-                        stack: '湖北外预测',
-                        itemStyle: {color:'rgba(2,191,138,0.7)',borderColor:'rgba(2,191,138,0.5)',borderWidth:2},
-                        lineStyle: {opacity: 0},
-                        areaStyle: {color: '#9BCD9B',opacity: 0.8}
                     }
                 ],
                 xAxis: {
@@ -442,7 +594,7 @@
                 backgroundColor: 'transparent',
                 legend: {
                     right: '5%',
-                    data: ['浙江','京津冀']
+                    data: ['浙江']
                 },              
                 grid: {
                     left: 0,
@@ -467,9 +619,9 @@
                 series: [
                     {   name: '浙江',
                         type: 'line',
-                        symbolSize: 1,
-                        symbol: 'circle',
-                        itemStyle: {color:'rgba(0,133,245,0.7)',borderColor:'rgba(0,133,245,0.5)',borderWidth:10},
+                        symbolSize: 4,
+                        symbol: 'rect',
+                        itemStyle: {color:'rgba(0,133,245,0.7)',borderColor:'rgba(0,133,245,0.5)',borderWidth:2},
                         data: zhejiang
                     },
                     {   name: '浙江', //下界
@@ -486,28 +638,6 @@
                         itemStyle: {color:'rgba(0,133,245,0.7)',borderColor:'rgba(0,133,245,0.5)',borderWidth:2},
                         lineStyle: {opacity: 0},
                         areaStyle: {color: '#E7FAFA',opacity: 0.8}
-                    },
-                    {   name: '京津冀',
-                        type: 'line',
-                        symbolSize: 1,
-                        symbol: 'circle',
-                        itemStyle: {color:'rgba(255,37,117,0.7)',borderColor:'rgba(255,37,117,0.5)',borderWidth:10},
-                        data: jjj
-                    },
-                    {   name: '京津冀', //下界
-                        type: 'line',
-                        data: jjjLow,
-                        stack: '京津冀预测',
-                        itemStyle: {color:'rgba(255,37,117,0.7)',borderColor:'rgba(255,37,117,0.5)',borderWidth:2},
-                        lineStyle: {opacity: 0}
-                    },
-                    {   name: '京津冀', //区间长度
-                        type: 'line',
-                        data: jjjDelta,
-                        stack: '京津冀预测',
-                        itemStyle: {color:'rgba(255,37,117,0.7)',borderColor:'rgba(255,37,117,0.5)',borderWidth:2},
-                        lineStyle: {opacity: 0},
-                        areaStyle: {color: '#FFE9EE',opacity: 0.8}
                     }
                 ],
                 xAxis: {
@@ -838,10 +968,9 @@
                 }]
             };
             myChart1.setOption(option1);
-            myChart2.setOption(option2);
             myChart3.setOption(option3);
             myChart4.setOption(option4);
-            charts = [myChart1,myChart2,myChart3,myChart4];
+            charts = [myChart1,myChart,myChart3,myChart4];
             $(window).resize(function(){
                 for(var i = 0; i < charts.length; i++) {
                     charts[i].resize();
